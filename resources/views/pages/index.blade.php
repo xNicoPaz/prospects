@@ -11,10 +11,8 @@
 		</a>
 	</div>
 	<div class="col-sm-6 menu">
-		<a href="/prospects">
-			<img src="images/conocer.png" class="img-responsive" border="0">
-		</a>
+		@include('partials.prospects')
 	</div>
-	<div class="col-sm-12 footer"><img src="images/footer.png" class="img-responsive" border="0"></div>
+	@include('partials.footer')
 </div>
 @endsection

@@ -13,4 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/**
+ * Directamente uso el metodo estatico ::view en lugar de usar ::get y 
+ * tener que pasarle una funcion anonima porque es la alternativa mas
+ * simple y menos verbose.
+ */
 Route::view('/', 'pages.index');
+Route::view('/video', 'pages.video');
