@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Prospect\Store as StoreAction;
+use App\Http\Requests\Prospect\StoreRequest;
 use App\Prospect;
 use Exception;
 use Illuminate\Http\Request;
@@ -10,8 +11,21 @@ use Illuminate\Support\Facades\DB;
 
 class ProspectController extends Controller
 {
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
+        /**
+         * Siempre programo en ingles
+         */
+        $alreadyRegistered = Prospect
+            ::select('email')
+            ->get()
+            ->pluck('email')
+            ->contains($request['email']);
+
+        if ($alreadyRegistered) {
+            return view('pages.already-registered');
+        }
+
         /**
          * Uso un paquete (https://laravelactions.com/) para separar
          * la logica de negocios de logica que tenga que ver con la
@@ -72,6 +86,6 @@ class ProspectController extends Controller
          *      la cohesion interna de dicha clase.
          */
 
-        return view("pages.thanks");
+        return view("pages.registered");
     }
 }

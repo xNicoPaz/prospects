@@ -53,7 +53,7 @@ class Store extends Action
          * Convenientemente Prospect tiene la propiedad email y name,
          * que Laravel leera automaticamente para enviar el mail.
          */
-        Mail::to($prospect->email)
+        Mail::to($prospect)
             /**
              * En general es bueno procesar el envio de emails de forma
              * asincrona para no extender el tiempo necesario en retornar

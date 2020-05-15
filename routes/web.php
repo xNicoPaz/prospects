@@ -31,5 +31,5 @@ Route::post('/prospects', 'ProspectController@store');
 // Route::get('/prospects/{prospect}', function (Prospect $prospect) {
 //     return new MailProspect($prospect);
 // });
-// Route::view('/thanks', 'pages.thanks');
+// Route::view('/thanks', 'pages.registered');
 // Route::view('/500', 'errors.500');
