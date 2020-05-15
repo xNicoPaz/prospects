@@ -30,7 +30,7 @@ class StoreRequest extends FormRequest
             'lastname' => ['required', 'string', 'max:255',],
             'email' => [
                 'required',
-                'email',
+                'email:rfc,dns',
                 /**
              * Aunque podria validar que no este ya registrado el
              * email y aun desde aqui mismo hacer la redireccion
@@ -58,12 +58,9 @@ class StoreRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Debe ingresar su nombre',
-            'name.max' => 'No puede ingresar un nombre de mas de 255 caracteres',
-            'lastname.required' => 'Debe ingresar su apellido',
-            'lastname.max' => 'No puede ingresar un apellido de mas de 255 caracteres',
-            'email.required' => 'Debe ingresar su email',
-            'email.email' => 'No ingreso una dirección de email valida',
+            '*.required' => 'Este campo es requerido',
+            '*.max' => 'Este campo no puede tener mas de 255 caracteres',
+            'email.email' => 'El mail debe ser una direccion valida',
             // 'email.not_in' => 'El email ya se encuentra registrado',
         ];
     }
