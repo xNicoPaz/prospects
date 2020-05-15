@@ -1,5 +1,7 @@
 <?php
 
+use App\Mail\Prospect as MailProspect;
+use App\Prospect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +22,14 @@ use Illuminate\Support\Facades\Route;
  */
 Route::view('/', 'pages.index');
 Route::view('/video', 'pages.video');
+Route::view('/prospects', 'pages.prospects');
+Route::post('/prospects', 'ProspectController@store');
+
+/**
+ * Testing
+ */
+// Route::get('/prospects/{prospect}', function (Prospect $prospect) {
+//     return new MailProspect($prospect);
+// });
+// Route::view('/thanks', 'pages.thanks');
+// Route::view('/500', 'errors.500');

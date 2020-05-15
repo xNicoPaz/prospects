@@ -50,6 +50,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        return parent::render($request, $exception);
+        /**
+         * Si estamos en produccion no vamos a mostrar la vista
+         * de Ignition, sino que vamos a mostrar una vista apropiada
+         * para el usuario.
+         */
+        if (config('app.env') === 'production') {
+            return view('errors.500');
+        } else {
+            return parent::render($request, $exception);
+        }
     }
 }
